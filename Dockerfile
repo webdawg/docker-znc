@@ -1,19 +1,18 @@
-# version 1.6.1-1
+# version 1.6.2-1
 # docker-version 1.8.2
-FROM ubuntu:15.04
-MAINTAINER Jim Myhrberg "contact@jimeh.me"
+FROM debian:latest
+MAINTAINER Web Dawg "WebDawg@gmail.com"
 
-ENV ZNC_VERSION 1.6.1
+ENV ZNC_VERSION 1.6.2
 
 RUN apt-get update \
-    && apt-get install -y sudo wget build-essential libssl-dev libperl-dev \
-               pkg-config swig3.0 libicu-dev \
+    && apt-get install -y sudo wget build-essential libssl-dev libperl-dev pkg-config swig3.0 libicu-dev ca-certificates\
     && mkdir -p /src \
     && cd /src \
     && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
     && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
     && cd "znc-${ZNC_VERSION}" \
-    && ./configure \
+    && ./configure --disable-optimization CXXFLAGS="--param ggc-min-expand=2 --param ggc-min-heapsize=20000" --with-openssl \
     && make \
     && make install \
     && apt-get remove -y wget \

@@ -1,3 +1,11 @@
+# Release Notes
+WebDawg@gmail.com forked this and updated for ZNC 1.6.2.  He also
+changed the gcc parms so it would compile on a low mem VPS.  He
+also changed it from ubuntu to debian:latest and added SSL and CA
+certificates.
+
+Props to the original maintainer.
+
 # ZNC for Docker
 
 Run the [ZNC][] IRC Bouncer in a Docker container.
