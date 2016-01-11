@@ -4,6 +4,10 @@ changed the gcc parms so it would compile on a low mem VPS.  He
 also changed it from ubuntu to debian:latest and added SSL and CA
 certificates.
 
+Also, on a low memory VPS, add some swap for a bit to compile.  Make sure to turn it off later
+as some admins do not like the wasted writes.  There is a reason you are paying per month for
+ram.
+
 Props to the original maintainer.
 
 # ZNC for Docker
